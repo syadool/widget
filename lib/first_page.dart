@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:widjet/second_page.dart';
 
 class FirstPage extends StatelessWidget{
   String nametext = '';
+
+  FirstPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,34 +11,26 @@ class FirstPage extends StatelessWidget{
       appBar: AppBar(
         title: const Text('画面遷移する人。'),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.network('https://researchmap.jp/kadoyah/avatar.jpg'),
-              TextField(
-                onChanged: (text){
-                  nametext = text;
-                },
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  //ボタンが押されたときに呼ばれるコード
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>  SecondPage(nametext),
-                    ),
-                  );
-                },
-                child: const Text('次の画面へ'),
-              ),
-            ],
+      body: ListView(
+        padding: const EdgeInsets.all(8),
+        children: <Widget>[
+          Container(
+            height: 50,
+            color: Colors.amber[600],
+            child: const Center(child: Text('Entry A')),
           ),
-        ),
-      ),
+          Container(
+            height: 50,
+            color: Colors.amber[500],
+            child: const Center(child: Text('Entry B')),
+          ),
+          Container(
+            height: 50,
+            color: Colors.amber[100],
+            child: const Center(child: Text('Entry C')),
+          ),
+        ],
+      )
     );
   }
 }
